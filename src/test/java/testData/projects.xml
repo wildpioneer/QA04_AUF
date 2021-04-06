@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projects>
+    <project id = "2">
+        <name>Test Project AT_1</name>
+        <isShowAnnouncement>true</isShowAnnouncement>
+        <nullValue>null</nullValue>
+    </project>
+    <project id = "2">
+
+    </project>
+</projects>

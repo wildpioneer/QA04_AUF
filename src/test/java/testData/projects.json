@@ -1,0 +1,18 @@
+[
+  {
+    "name": "Test Project AT_1",
+    "id": 1,
+    "isShowAnnouncement": true,
+    "nullValue": null
+  },
+  {
+    "name": "Test Project AT_2",
+    "id": 1,
+    "isShowAnnouncement": true,
+    "nullValue": null,
+    "array" : [
+      {"sd" :  1},
+      {"sd" :  2}
+    ]
+  }
+]
