@@ -12,32 +12,16 @@ import steps.ProjectSteps;
 
 public class SmokeTest1 extends BaseTest {
 
-    @Test
+    @Test (groups = "smoketest")
     public void LoginTest() {
-/*
-        1. Запустить драйвер
-        2. Перейти на сайт
-        3. Ввести логин
-        4. Ввести пароль
-        5. Нажать Login
-        6. Dashboard page отобразился
-*/
         LoginSteps loginSteps = new LoginSteps(browsersService);
         loginSteps.loginWithCorrectCredentials("atrostyanko+0401@gmail.com", "QqtRK9elseEfAk6ilYcJ");
 
         Assert.assertEquals(browsersService.getDriver().getTitle(), "All Projects - TestRail");
     }
 
-    @Test
+    @Test (groups = "smoketest", description = "Login Test With Incorrect Credentials")
     public void LoginTestWithIncorrectCredentials() {
-/*
-        1. Запустить драйвер
-        2. Перейти на сайт
-        3. Ввести логин
-        4. Ввести пароль
-        5. Нажать Login
-        6. Dashboard page отобразился
-*/
         LoginSteps loginSteps = new LoginSteps(browsersService);
         LoginPage loginPage = loginSteps.loginWithIncorrectCredentials("test@gmail.com", "qweqwe");
 
@@ -45,7 +29,7 @@ public class SmokeTest1 extends BaseTest {
                 "Email/Login or Password is incorrect. Please try again.");
     }
 
-    @Test
+    @Test (enabled = false)
     public void AddNewProjectTes() {
         LoginSteps loginSteps = new LoginSteps(browsersService);
         DashboardPage dashboardPage = loginSteps

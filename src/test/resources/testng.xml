@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="TestGroups">
+    <test name="Group A DEMO">
+        <classes>
+            <class name="tests.SmokeTest1"></class>
+        </classes>
+    </test>
+</suite>
