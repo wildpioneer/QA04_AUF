@@ -3,6 +3,9 @@ package steps;
 import baseEntities.BaseStep;
 import core.BrowsersService;
 import models.Project;
+import pages.AddProjectPage;
+
+import java.sql.Driver;
 
 public class ProjectSteps extends BaseStep {
 
@@ -11,10 +14,13 @@ public class ProjectSteps extends BaseStep {
     }
 
     public void AddProject(Project project) {
-        System.out.println(project.getName());
-        System.out.println(project.getAnnouncement());
-        System.out.println(project.isShowAnnouncement());
-        System.out.println(project.getType());
+        AddProjectPage addProjectPage = new AddProjectPage(browsersService, false);
+        addProjectPage.getAddProjectButton().click();
+
+
+        // ЗАйти на страницу
+        // Заполнить форму
+        // Сохранить запись
     }
 
     public void UpdateProject(Project project) {

@@ -4,6 +4,8 @@ import baseEntities.BasePage;
 import core.BrowsersService;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import wrappers.Button;
+import wrappers.UIElement;
 
 public class LoginPage extends BasePage {
     // Описание селекторов
@@ -32,16 +34,16 @@ public class LoginPage extends BasePage {
     }
 
     // Методы для WebElement-ов
-    public WebElement getEmailInput() {
-        return driver.findElement(emailInputBy);
+    public UIElement getEmailInput() {
+        return new UIElement(driver, emailInputBy);
     }
 
     public WebElement getPasswordInput() {
         return driver.findElement(passwordInputBy);
     }
 
-    public WebElement getLogInButton() {
-        return driver.findElement(logInButtonBy);
+    public Button getLogInButton() {
+        return new Button(driver, logInButtonBy);
     }
 
     public String getErrorText() {
