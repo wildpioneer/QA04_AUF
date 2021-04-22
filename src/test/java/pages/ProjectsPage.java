@@ -8,7 +8,9 @@ import wrappers.Table;
 
 public class ProjectsPage extends BasePage {
     String deleteIconForElementInTableSelector = "//a[text()='remove']/ancestor::tr/descendant::div[@class='icon-small-delete']";
+
     String rowElementInTableSelector = "//a[text()='remove']/ancestor::tr";
+
     protected static final By tableBy = By.className("grid");
 
     public ProjectsPage(BrowsersService browsersService, boolean openPageByUrl) {

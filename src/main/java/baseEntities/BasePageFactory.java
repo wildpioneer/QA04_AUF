@@ -5,7 +5,7 @@ import core.ReadProperties;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
-public abstract class BasePage {
+public abstract class BasePageFactory {
     protected static final int WAIT_FOR_PAGE_LOAD_IN_SECONDS = 5;
     protected WebDriver driver;
     protected BrowsersService browsersService;
@@ -14,7 +14,7 @@ public abstract class BasePage {
     protected abstract void openPage();
     public abstract boolean isPageOpened();
 
-    public BasePage(BrowsersService browsersService, boolean openPageByUrl) {
+    public BasePageFactory(BrowsersService browsersService, boolean openPageByUrl) {
         this.browsersService = browsersService;
         this.driver = browsersService.getDriver();
         this.baseUrl = new ReadProperties().getURL();

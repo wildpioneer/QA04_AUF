@@ -4,6 +4,7 @@ import baseEntities.BaseStep;
 import core.BrowsersService;
 import models.Project;
 import pages.AddProjectPage;
+import pages.DashboardPage;
 
 import java.sql.Driver;
 
@@ -14,13 +15,30 @@ public class ProjectSteps extends BaseStep {
     }
 
     public void AddProject(Project project) {
+/*
+        DashboardPage dashboardPage = new DashboardPage(browsersService, false);
+        dashboardPage.getSidebarProjectsAddButton().click();
+*/
+
         AddProjectPage addProjectPage = new AddProjectPage(browsersService, false);
-        addProjectPage.getAddProjectButton().click();
+        addProjectPage.name.sendKeys(project.getName());
 
+        switch (project.getType()) {
+            case SINGLE_FOR_ALL_CASES:
+                addProjectPage.getSuiteModeSingleOption().click();
+                break;
+            case SINGLE_WITH_BASELINE:
+                addProjectPage.getSuiteModeSingleBaselineOption().click();
+                break;
+            case MULTIPLE:
+                addProjectPage.getSuiteModeMultiSelectorOption().click();
+                break;
+        }
 
-        // ЗАйти на страницу
-        // Заполнить форму
-        // Сохранить запись
+        System.out.println(addProjectPage.nameList.size());
+        System.out.println(addProjectPage.fullNameList.size());
+
+        addProjectPage.getAddProjectButton().submit();
     }
 
     public void UpdateProject(Project project) {

@@ -57,15 +57,15 @@ public class SmokeTest1 extends BaseTest {
         LoginPage loginPage = loginSteps.loginWithIncorrectCredentials("test@gmail.com", "qweqwe");
 
         SoftAssert softAssert = new SoftAssert();
-        softAssert.assertEquals(loginPage.getErrorText(),
+        softAssert.assertEquals(loginPage.emailInput.getText(),
                 "Email/Login or Password is incorrect. Please try again.1");
-        softAssert.assertEquals(loginPage.getErrorText(),
+        softAssert.assertEquals(loginPage.emailInput.getText(),
                 "Email/Login or Password is incorrect. Please try again.2");
         softAssert.assertAll();
     }
 
-    @Test(enabled = false)
-    public void AddNewProjectTes() {
+    @Test
+    public void AddNewProjectTest() {
         LoginSteps loginSteps = new LoginSteps(browsersService);
         DashboardPage dashboardPage = loginSteps
                 .loginWithCorrectCredentials("atrostyanko+0401@gmail.com", "QqtRK9elseEfAk6ilYcJ");
@@ -85,8 +85,8 @@ public class SmokeTest1 extends BaseTest {
     @Test
     public void waitTest() {
         LoginPage loginPage = new LoginPage(browsersService, true);
-        loginPage.getEmailInput().sendKeys("atrostyanko+0401@gmail.com");
-        loginPage.getPasswordInput().sendKeys("QqtRK9elseEfAk6ilYcJ");
+        loginPage.emailInput.sendKeys("atrostyanko+0401@gmail.com");
+        loginPage.passwordInput.sendKeys("QqtRK9elseEfAk6ilYcJ");
 
         UIElement webElement1 = new UIElement(browsersService.getDriver(), By.id("button_primary"));
 
@@ -94,7 +94,7 @@ public class SmokeTest1 extends BaseTest {
         webElement1.click();
 
 
-        loginPage.getLogInButton().click();
+        loginPage.logInButton.click();
 
         long start = new Date().getTime();
         WebElement element = waits.waitForVisibility(

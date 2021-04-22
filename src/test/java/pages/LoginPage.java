@@ -1,18 +1,24 @@
 package pages;
 
 import baseEntities.BasePage;
+import baseEntities.BasePageFactory;
 import core.BrowsersService;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import wrappers.Button;
-import wrappers.UIElement;
+import org.openqa.selenium.support.FindBy;
 
 public class LoginPage extends BasePage {
     // Описание селекторов
-    protected static final By emailInputBy = By.id("name");
-    protected static final By passwordInputBy = By.id("password");
-    protected static final By logInButtonBy = By.id("button_primary");
-    protected static final By errorLabelBy = By.className("error-text");
+    @FindBy(id = "name")
+    public WebElement emailInput;
+
+    @FindBy(id = "password")
+    public WebElement passwordInput;
+
+    @FindBy(id = "button_primary")
+    public WebElement logInButton;
+
+    @FindBy(id = "error-text")
+    public WebElement errorLabel;
 
     // Инициализация класса
     public LoginPage(BrowsersService browsersService, boolean openPageByUrl) {
@@ -27,26 +33,9 @@ public class LoginPage extends BasePage {
     @Override
     public boolean isPageOpened() {
         try {
-            return getLogInButton().isDisplayed();
+            return logInButton.isDisplayed();
         } catch (Exception ex) {
             return false;
         }
-    }
-
-    // Методы для WebElement-ов
-    public UIElement getEmailInput() {
-        return new UIElement(driver, emailInputBy);
-    }
-
-    public WebElement getPasswordInput() {
-        return driver.findElement(passwordInputBy);
-    }
-
-    public Button getLogInButton() {
-        return new Button(driver, logInButtonBy);
-    }
-
-    public String getErrorText() {
-        return driver.findElement(errorLabelBy).getText();
     }
 }
