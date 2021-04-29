@@ -16,9 +16,7 @@ public class BrowsersService {
     private Waits waits;
 
     public BrowsersService() {
-        ReadProperties readProperties = new ReadProperties();
-
-        driver = new BrowsersService(readProperties.getBrowserName()).getDriver();
+        driver = new BrowsersService(new ReadProperties().getBrowserName()).getDriver();
         waits = new Waits(driver);
     }
 

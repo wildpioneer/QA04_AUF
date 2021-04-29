@@ -4,6 +4,10 @@ import baseEntities.BaseTest;
 import core.UIMethods;
 import enums.ProjectType;
 import models.Project;
+import models.ProjectBuilder;
+import models.Singleton;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -26,7 +30,8 @@ import java.util.NoSuchElementException;
 import java.util.concurrent.TimeUnit;
 
 public class SmokeTest1 extends BaseTest {
-
+    public Logger logger = LogManager.getLogger();
+    
     @Test(groups = {"smoke", "regression"}, timeOut = 5000l)
     public void LoginTest() {
 /*
@@ -54,12 +59,13 @@ public class SmokeTest1 extends BaseTest {
         6. Dashboard page отобразился
 */
         LoginSteps loginSteps = new LoginSteps(browsersService);
-        LoginPage loginPage = loginSteps.loginWithIncorrectCredentials("test@gmail.com", "qweqwe");
+        LoginPage loginPage = loginSteps
+                .loginWithIncorrectCredentials("test@gmail.com", "qweqwe");
 
         SoftAssert softAssert = new SoftAssert();
-        softAssert.assertEquals(loginPage.emailInput.getText(),
+        softAssert.assertEquals(loginPage.getEmailInput().getText(),
                 "Email/Login or Password is incorrect. Please try again.1");
-        softAssert.assertEquals(loginPage.emailInput.getText(),
+        softAssert.assertEquals(loginPage.getEmailInput().getText(),
                 "Email/Login or Password is incorrect. Please try again.2");
         softAssert.assertAll();
     }
@@ -72,21 +78,43 @@ public class SmokeTest1 extends BaseTest {
 
         dashboardPage.getSidebarProjectsAddButton().click();
 
-        Project project = new Project();
-        project.setName("Test Project AT");
-        project.setAnnouncement("Test Project Definition");
-        project.setShowAnnouncement(true);
-        project.setType(ProjectType.MULTIPLE);
+        Project project = new Project()
+                .setName("Test Project AT")
+                .setAnnouncement("Test Project Definition")
+                .setShowAnnouncement(true)
+                .setType(ProjectType.MULTIPLE);
 
         ProjectSteps projectSteps = new ProjectSteps(browsersService);
         projectSteps.AddProject(project);
+
+        Singleton.getRandomInt();
+    }
+
+    @Test
+    public void AddNewProjectTest1() {
+        LoginSteps loginSteps = new LoginSteps(browsersService);
+        DashboardPage dashboardPage = loginSteps
+                .loginWithCorrectCredentials("atrostyanko+0401@gmail.com", "QqtRK9elseEfAk6ilYcJ");
+
+        dashboardPage.getSidebarProjectsAddButton().click();
+
+        ProjectBuilder project = new ProjectBuilder.Builder()
+                .withName("Test Project AT")
+                .withAnnouncement("Test Project Definition")
+                .withShowAnnouncement(true)
+                .withType(ProjectType.MULTIPLE)
+                .build();
+
+
+        ProjectSteps projectSteps = new ProjectSteps(browsersService);
+        //projectSteps.AddProject(project);
     }
 
     @Test
     public void waitTest() {
         LoginPage loginPage = new LoginPage(browsersService, true);
-        loginPage.emailInput.sendKeys("atrostyanko+0401@gmail.com");
-        loginPage.passwordInput.sendKeys("QqtRK9elseEfAk6ilYcJ");
+        loginPage.getEmailInput().sendKeys("atrostyanko+0401@gmail.com");
+        loginPage.getPasswordInput().sendKeys("QqtRK9elseEfAk6ilYcJ");
 
         UIElement webElement1 = new UIElement(browsersService.getDriver(), By.id("button_primary"));
 
@@ -94,7 +122,7 @@ public class SmokeTest1 extends BaseTest {
         webElement1.click();
 
 
-        loginPage.logInButton.click();
+        loginPage.getLogInButton().click();
 
         long start = new Date().getTime();
         WebElement element = waits.waitForVisibility(
@@ -181,5 +209,12 @@ public class SmokeTest1 extends BaseTest {
             e.printStackTrace();
         }
 
+    }
+
+    @Test
+    public void chainTest() {
+        LoginSteps loginSteps = new LoginSteps(browsersService);
+
+        DashboardPage dashboardPage = loginSteps.loginWithCorrectCredentials("", "");
     }
 }

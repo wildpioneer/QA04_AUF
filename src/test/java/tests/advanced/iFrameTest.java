@@ -1,4 +1,4 @@
-package tests;
+package tests.advanced;
 
 import baseEntities.BaseTest;
 import org.openqa.selenium.By;
