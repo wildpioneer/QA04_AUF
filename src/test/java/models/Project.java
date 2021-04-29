@@ -9,8 +9,8 @@ import lombok.ToString;
 @ToString
 @Builder
 public class Project {
-    private String name;
-    private String announcement;
-    private boolean isShowAnnouncement;
-    private ProjectType type;
+    String name;
+    String announcement;
+    boolean isShowAnnouncement;
+    ProjectType type;
 }

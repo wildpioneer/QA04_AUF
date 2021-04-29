@@ -101,7 +101,6 @@ public class SmokeTest1 extends BaseTest {
                 .type(ProjectType.MULTIPLE)
                 .build();
 
-
         ProjectSteps projectSteps = new ProjectSteps(browsersService);
     }
 
