@@ -3,7 +3,6 @@ package steps;
 import baseEntities.BaseStep;
 import core.BrowsersService;
 import io.qameta.allure.Step;
-import models.Singleton;
 import pages.DashboardPage;
 import pages.LoginPage;
 

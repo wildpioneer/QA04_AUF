@@ -1,4 +1,4 @@
-package tests;
+package tests.uiTests;
 
 import core.Retry;
 import org.testng.Assert;

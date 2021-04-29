@@ -1,4 +1,4 @@
-package tests;
+package tests.uiTests;
 
 import baseEntities.BaseTest;
 import core.BrowsersService;

@@ -1,4 +1,4 @@
-package tests;
+package tests.uiTests;
 
 import baseEntities.BaseTest;
 import enums.ProjectType;
@@ -36,11 +36,12 @@ public class AllureTest extends BaseTest {
         LoginSteps loginSteps = new LoginSteps(browsersService);
         loginSteps.loginWithCorrectCredentials("atrostyanko+0401@gmail.com", "QqtRK9elseEfAk6ilYcJ");
 
-        Project project = new Project();
-        project.setName("Test Project AT");
-        project.setAnnouncement("Test Project Definition");
-        project.setShowAnnouncement(true);
-        project.setType(ProjectType.MULTIPLE);
+        Project project = Project.builder()
+                .name("Test Project AT")
+                .announcement("Test Project Definition")
+                .isShowAnnouncement(true)
+                .type(ProjectType.MULTIPLE)
+                .build();
 
         ProjectSteps projectSteps = new ProjectSteps(browsersService);
         projectSteps.AddProject(project);

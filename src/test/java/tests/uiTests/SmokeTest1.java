@@ -1,11 +1,8 @@
-package tests;
+package tests.uiTests;
 
 import baseEntities.BaseTest;
-import core.UIMethods;
 import enums.ProjectType;
 import models.Project;
-import models.ProjectBuilder;
-import models.Singleton;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
@@ -78,16 +75,15 @@ public class SmokeTest1 extends BaseTest {
 
         dashboardPage.getSidebarProjectsAddButton().click();
 
-        Project project = new Project()
-                .setName("Test Project AT")
-                .setAnnouncement("Test Project Definition")
-                .setShowAnnouncement(true)
-                .setType(ProjectType.MULTIPLE);
+        Project project = Project.builder()
+                .name("Test Project AT")
+                .announcement("Test Project Definition")
+                .isShowAnnouncement(true)
+                .type(ProjectType.MULTIPLE)
+                .build();
 
         ProjectSteps projectSteps = new ProjectSteps(browsersService);
         projectSteps.AddProject(project);
-
-        Singleton.getRandomInt();
     }
 
     @Test
@@ -98,16 +94,15 @@ public class SmokeTest1 extends BaseTest {
 
         dashboardPage.getSidebarProjectsAddButton().click();
 
-        ProjectBuilder project = new ProjectBuilder.Builder()
-                .withName("Test Project AT")
-                .withAnnouncement("Test Project Definition")
-                .withShowAnnouncement(true)
-                .withType(ProjectType.MULTIPLE)
+        Project project = Project.builder()
+                .name("Test Project AT")
+                .announcement("Test Project Definition")
+                .isShowAnnouncement(true)
+                .type(ProjectType.MULTIPLE)
                 .build();
 
 
         ProjectSteps projectSteps = new ProjectSteps(browsersService);
-        //projectSteps.AddProject(project);
     }
 
     @Test
@@ -118,10 +113,7 @@ public class SmokeTest1 extends BaseTest {
 
         UIElement webElement1 = new UIElement(browsersService.getDriver(), By.id("button_primary"));
 
-        //UIMethods.Click(browsersService.getDriver(), loginPage.getLogInButton());
         webElement1.click();
-
-
         loginPage.getLogInButton().click();
 
         long start = new Date().getTime();

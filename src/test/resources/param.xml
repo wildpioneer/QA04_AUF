@@ -5,7 +5,7 @@
     <parameter name="last-name" value="Trostyanko"></parameter>
     <test name="GUI tests">
         <classes>
-            <class name="tests.ParamTest"></class>
+            <class name="tests.uiTests.ParamTest"></class>
         </classes>
     </test>
 </suite>

@@ -1,6 +1,6 @@
-package tests;
+package tests.uiTests;
 
-import models.UserSimple;
+import models.User;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.annotations.Test;
@@ -10,11 +10,11 @@ public class LombokTest {
 
     @Test
     public void lombokTest() {
-        UserSimple user = UserSimple.builder()
+        User user = User.builder()
                 .firstname("Test")
                 .surname("01")
                 .build();
-        UserSimple user1 = UserSimple.builder()
+        User user1 = User.builder()
                 .firstname("Test")
                 .surname("01")
                 .build();

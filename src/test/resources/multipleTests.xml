@@ -3,13 +3,13 @@
 <suite name="general" thread-count="2" parallel="classes">
     <test name="GUI tests">
         <classes>
-            <class name="tests.SmokeTest1"></class>
-            <class name="tests.SmokeTest2"></class>
+            <class name="tests.uiTests.SmokeTest1"></class>
+            <class name="tests.uiTests.SmokeTest2"></class>
         </classes>
     </test>
     <test name="API tests">
         <classes>
-            <class name="tests.PriorityTest">
+            <class name="tests.uiTests.PriorityTest">
             </class>
         </classes>
     </test>

@@ -3,9 +3,9 @@ package models;
 import lombok.*;
 
 @Data
-@ToString(exclude = "id")
+@ToString
 @Builder
-public class UserSimple {
+public class User {
     String firstname;
     String surname;
     String email;

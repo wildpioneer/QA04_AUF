@@ -1,4 +1,4 @@
-package tests;
+package tests.uiTests;
 
 import baseEntities.BaseTest;
 import core.BrowsersService;
@@ -34,20 +34,15 @@ public class ParamTest extends BaseTest {
 
     @Test
     public void  AddProjectTest() {
-        Project project = new Project();
-        project.setName("sdasdasd");
-        project.setType(ProjectType.MULTIPLE);
+        Project project = Project.builder()
+                .name("sdasdasd")
+                .type(ProjectType.MULTIPLE)
+                .build();
 
         LoginSteps loginSteps = new LoginSteps(browsersService);
         loginSteps.loginWithCorrectCredentials("dsdsd", "sasdasd");
 
         ProjectSteps projectSteps = new ProjectSteps(browsersService);
         projectSteps.AddProject(project);
-
-
-/*
-        Assert.assertTrue("Successfully added the new project.");
-        Assert.assertTrue(get() != null);
-*/
     }
 }
