@@ -9,6 +9,7 @@ import lombok.ToString;
 @ToString
 @Builder
 public class Project {
+    int id;
     String name;
     String announcement;
     boolean isShowAnnouncement;
