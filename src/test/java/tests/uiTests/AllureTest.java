@@ -15,7 +15,7 @@ public class AllureTest extends BaseTest {
     @Feature("Feature 1")
     @Story("Story 1")
     @Test(description = "Login Test")
-    @Description("Проверка с корректными данными.")
+    @Description("Correct data.")
     @Flaky
     @TmsLink("623")
     @Issue("AQ-123")
@@ -44,6 +44,6 @@ public class AllureTest extends BaseTest {
                 .build();
 
         ProjectSteps projectSteps = new ProjectSteps(browsersService);
-        projectSteps.AddProject(project);
+        //projectSteps.AddProject(project);
     }
 }

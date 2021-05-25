@@ -15,7 +15,7 @@ public class LoginSteps extends BaseStep {
         loginPage = new LoginPage(browsersService, true);
     }
 
-    @Step("Логирование с корректными '{email}' '{psw}'")
+    @Step("Login '{email}' '{psw}'")
     public DashboardPage loginWithCorrectCredentials(String email, String psw) {
         setEmail(email);
         setPsw(psw);
